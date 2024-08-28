@@ -140,26 +140,6 @@
   <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-  <script>
-    $(function () {
-      bsCustomFileInput.init();
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const radios = document.getElementsByName('resguardante');
-        const extraInfo = document.getElementById('extra-info');
-
-        radios.forEach(radio => {
-            radio.addEventListener('change', function () {
-                if (this.value === 'no') {
-                    extraInfo.style.display = 'block';
-                } else {
-                    extraInfo.style.display = 'none';
-                }
-            });
-        });
-    });
-  </script>
+  @stack('códigoJS')
 </body>
 </html>

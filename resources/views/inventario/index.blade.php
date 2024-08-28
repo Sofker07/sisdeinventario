@@ -159,3 +159,21 @@
     </div>
   </div>
 @endsection
+@push('códigoJS')
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const radios = document.getElementsByName('resguardante');
+        const extraInfo = document.getElementById('extra-info');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'no') {
+                    extraInfo.style.display = 'block';
+                } else {
+                    extraInfo.style.display = 'none';
+                }
+            });
+        });
+    });
+  </script>
+@endpush

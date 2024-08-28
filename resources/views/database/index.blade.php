@@ -46,3 +46,10 @@
     </div>
   </div>
 @endsection
+@push('códigoJS')
+  <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+  </script>
+@endpush

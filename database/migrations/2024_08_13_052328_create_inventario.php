@@ -18,19 +18,19 @@ return new class extends Migration
             $table->string('numero_de_serie',)->nullable();
             $table->string('modelo')->nullable();
             $table->string('marca')->nullable();
-            $table->float('costo_actual')->nullable();
+            $table->decimal('costo_actual',10,2)->nullable();
             $table->string('inventario_nacional')->nullable();
             $table->string('clave_ur')->nullable();
             $table->string('resguardante_actual')->nullable();
             $table->string('rfc_resguardante')->nullable();
             $table->integer('empleado')->nullable();
             $table->boolean('inventariado')->default(false);
-            $table->string('observaciones')->nullable();
-            $table->boolean('baja')->default(false);
-            $table->boolean('resguardante_correcto')->default(true);
-            $table->string('resguardante_nuevo')->nullable();
-            $table->string('rfc_resguardante_nuevo')->nullable();
-            $table->integer('empleado_nuevo')->nullable();
+            // $table->string('observaciones')->nullable();
+            // $table->boolean('baja')->nullable();
+            // $table->boolean('resguardante_correcto')->nullable();
+            // $table->string('resguardante_nuevo')->nullable();
+            // $table->string('rfc_resguardante_nuevo')->nullable();
+            // $table->integer('empleado_nuevo')->nullable();
             $table->timestamps();
         });
     }
