@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                   <div class="form-grup">
                     <label>Numero de Activo</label>
-                    <input type="number" name="nombre_apellido" value="{{old('nombre_apellido')}}" class="form-control" autofocus>
+                    <input type="text" id="numero_activo" name="numero_activo" class="form-control" autofocus>
                   </div>
                 </div>
               </div>
@@ -26,19 +26,19 @@
                 <div class="col-md-6">
                   <div class="form-grup">
                     <label>Descripción</label>
-                    <input type="text" name="email" value="{{old('email')}}" class="form-control" disabled>
+                    <input type="text" id="descripcion" name="descripcion" class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-grup">
                     <label>Número de serie</label>
-                    <input type="text" name="telefono" value="{{old('telefono')}}" class="form-control" disabled>
+                    <input type="text" id="numero_serie" name="numero_serie"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-grup">
                     <label>Modelo</label>
-                    <input type="text" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" class="form-control" disabled>
+                    <input type="text" id="modelo" name="modelo"  class="form-control" readonly>
                   </div>
                 </div>
               </div>
@@ -46,19 +46,19 @@
                 <div class="col-md-4">
                   <div class="form-grup">
                     <label>Marca</label>
-                    <input type="text" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" class="form-control" disabled>
+                    <input type="text" id="marca" name="marca"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-grup">
                     <label>Costo actual</label>
-                    <input type="number" name="ministerio" value="{{old('ministerio')}}" class="form-control" disabled>
+                    <input type="number" id="costo_actual" name="costo_actual"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-grup">
                     <label>Inventario nacional</label>
-                    <input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" disabled>
+                    <input type="text" id="inventario_nacional" name="inventario_nacional"  class="form-control" readonly>
                   </div>
                 </div>
               </div>
@@ -66,25 +66,25 @@
                 <div class="col-md-2">
                   <div class="form-grup">
                     <label>Clave Ur</label>
-                    <input type="text" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" class="form-control" disabled>
+                    <input type="text" id="clave_ur" name="clave_ur"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-grup">
                     <label>Resguardante actual</label>
-                    <input type="text" name="ministerio" value="{{old('ministerio')}}" class="form-control" disabled>
+                    <input type="text" id="resguardante_actual" name="resguardante_actual"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-grup">
                     <label>RFC del resguardante</label>
-                    <input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" disabled>
+                    <input type="text" id="rfc_resguardante" name="rfc_resguardante"  class="form-control" readonly>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-grup">
                     <label>Empleado</label>
-                    <input type="number" name="direccion" value="{{old('direccion')}}" class="form-control" disabled>
+                    <input type="number" id="empleado" name="empleado"  class="form-control" readonly>
                   </div>
                 </div>
               </div>
@@ -129,23 +129,23 @@
                   <div class="col-md-4">
                     <div class="form-grup">
                       <label>Nuevo resguardante</label>
-                      <input type="text" name="ministerio" value="{{old('ministerio')}}" class="form-control" required>
+                      <input type="text" name="ministerio"  class="form-control" required>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-grup">
                       <label>RFC del resguardante</label>
-                      <input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" required>
+                      <input type="text" name="direccion"  class="form-control" required>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-grup">
                       <label>Empleado</label>
-                      <input type="number" name="direccion" value="{{old('direccion')}}" class="form-control" required>
+                      <input type="number" name="direccion"  class="form-control" required>
                     </div>
                   </div>
                 </div>
-            </div>
+              </div>
               <hr>
               <div class="row">
                 <div class="col-md-9">
@@ -160,6 +160,7 @@
   </div>
 @endsection
 @push('códigoJS')
+  <!-- script para desplegar los campos del nuevo resguardante -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         const radios = document.getElementsByName('resguardante');
@@ -175,5 +176,37 @@
             });
         });
     });
+  </script>
+
+  <!-- Incluye la librería jQuery, que es necesaria para usar AJAX de manera sencilla -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#numero_activo').on('change', function() {
+              var numeroActivo = $(this).val();
+  
+              // Petición AJAX para obtener la información del activo
+              $.ajax({
+                  url: '/inventario/' + numeroActivo,
+                  method: 'GET',
+                  success: function(response) {
+                      // Si la petición es exitosa, rellena los campos
+                      $('#descripcion').val(response.descripcion);
+                      $('#numero_serie').val(response.numero_serie);
+                      $('#modelo').val(response.modelo);
+                      $('#marca').val(response.marca);
+                      $('#costo_actual').val(response.costo_actual);
+                      $('#inventario_nacional').val(response.inventario_nacional);
+                      $('#clave_ur').val(response.clave_ur);
+                      $('#resguardante_actual').val(response.resguardante_actual);
+                      $('#rfc_resguardante').val(response.rfc_resguardante);
+                      $('#empleado').val(response.empleado);
+                  },
+                  error: function() {
+                      alert('Activo no encontrado');
+                  }
+              });
+          });
+      });
   </script>
 @endpush

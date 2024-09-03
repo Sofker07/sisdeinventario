@@ -12,33 +12,6 @@ class ImportadorController extends Controller
      */
     public function index()
     {
-        // $inventario = Invantario::all();
-        // print_r($inventario);
-        // foreach ($inventario as $inventariofila){
-        //     print_r($inventariofila->id);
-        // }
-        // $filainventario=new Invantario;
-        
-        // // $inventario=Invantario::Create([
-        // //     'numero_de_activo'=>595154,
-        // //     'numero_de_activo'=>595154,
-        // //     'numero_de_activo'=>595154,
-        // //     'numero_de_activo'=>595154,
-        // // ]);
-
-        // // $filainventario->id="";
-        // $filainventario->numero_de_activo="595154";
-        // $filainventario->descripcion="Computadora";
-        // $filainventario->numero_de_serie="abc123";
-        // $filainventario->modelo="ultimo";
-        // $filainventario->marca="registrada";
-        // $filainventario->costo_actual="1000";
-        // $filainventario->inventario_nacional="abc123";
-        // $filainventario->clave_ur="123";
-        // $filainventario->resguardante_actual="yo";
-        // $filainventario->rfc_resguardante="abc123";
-        // $filainventario->emplado="123";
-        // $filainventario->save();
         return view('database.index');
     }
 
@@ -81,19 +54,6 @@ class ImportadorController extends Controller
                     'rfc_resguardante'=>isset($arregloFilas[46]) ? $arregloFilas[46] : null,
                     'empleado'=>isset($arregloFilas[50]) ? $arregloFilas[50] : null
                 ]);
-                // print_r($arregloFilas);
-                // isset($arregloFilas[45]) ? $arregloFilas[45] : "";
-                // print_r($arregloFilas[2]);
-                // print_r($arregloFilas[5]);
-                // print_r($arregloFilas[12]);
-                // print_r($arregloFilas[13]);
-                // print_r($arregloFilas[14]);
-                // print_r($arregloFilas[17]);
-                // print_r($arregloFilas[37]);
-                // print_r($arregloFilas[44]);
-                // print_r($arregloFilas[45]);
-                // print_r($arregloFilas[46]);
-                // print_r($arregloFilas[50]);
             }
             $linea++;
         }

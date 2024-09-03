@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index');})->middleware('auth')->name('index');
 
-Route::get('/inventario', function () {return view('inventario.index');})->middleware('auth')->name('inventario');
+// Route::get('/inventario', function () {return view('inventario.index');})->middleware('auth')->name('inventario');
 
 Auth::routes(['register'=>false]);
 
@@ -24,4 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/database', [App\Http\Controllers\ImportadorController::class, 'index'])->name('database');
 
+Route::get('/inventario', [App\Http\Controllers\ActivoController::class, 'index']);
+
 Route::post('/database/importador', [App\Http\Controllers\ImportadorController::class, 'importar'])->name('database.importador');
+
+Route::get('/inventario/{numero}', [App\Http\Controllers\ActivoController::class, 'infoActivo'])->name('inventario');
