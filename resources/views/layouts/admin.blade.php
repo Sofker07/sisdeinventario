@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
   <!-- Iconos de bootstrap-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  {{-- sweetalert2 --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!--JQuery-->
+  <script src="{{asset('/plugins/jquery/jquery.js')}}"></script>
+  <!--Datatables-->
+  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -110,7 +118,7 @@
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
+      <!-- Control sidebar content go es here -->
       <div class="p-3">
         <h5>Title</h5>
         <p>Sidebar content</p>
@@ -140,6 +148,20 @@
   <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+  <!--Datatables-->
+  <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+  <script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+  <script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
   @stack('códigoJS')
 </body>
 </html>

@@ -17,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index');})->middleware('auth')->name('index');
 
-// Route::get('/inventario', function () {return view('inventario.index');})->middleware('auth')->name('inventario');
+Auth::routes(['register'=>true]);
 
-Auth::routes(['register'=>false]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/database', [App\Http\Controllers\ImportadorController::class, 'index'])->name('database')->middleware('auth');
 
-Route::get('/database', [App\Http\Controllers\ImportadorController::class, 'index'])->name('database');
+Route::get('/inventario', [App\Http\Controllers\ActivoController::class, 'index'])->name('inventario.index')->middleware('auth');
 
-Route::get('/inventario', [App\Http\Controllers\ActivoController::class, 'index']);
+Route::post('/database/importador', [App\Http\Controllers\ImportadorController::class, 'importar'])->name('database.importador')->middleware('auth');
 
-Route::post('/database/importador', [App\Http\Controllers\ImportadorController::class, 'importar'])->name('database.importador');
+Route::get('/progreso', [App\Http\Controllers\ImportadorController::class, 'getProgress'])->name('database.getProgress');
 
-Route::get('/inventario/{numero}', [App\Http\Controllers\ActivoController::class, 'infoActivo'])->name('inventario');
+Route::get('/inventario/{numero}', [App\Http\Controllers\ActivoController::class, 'infoActivo'])->name('inventario')->middleware('auth');
+
+Route::put('/inventario/guardar', [App\Http\Controllers\ActivoController::class, 'update'])->name('inventario.save');
+
+Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoController::class, 'show']);

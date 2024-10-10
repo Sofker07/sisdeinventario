@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invantario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImportadorController extends Controller
 {
@@ -15,79 +16,65 @@ class ImportadorController extends Controller
         return view('database.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
     public function importar(Request $request)
     {
-        
-        $archivo=$request->file('archivo_txt');
-        $data=file($archivo->getRealPath());
-        $arregloFilas=[];
+        // Validar el archivo
+        $request->validate([
+            'archivo_txt' => 'required|mimes:txt',
+        ]);
+
+        // Obtener el archivo
+        $archivo = $request->file('archivo_txt');
+        $data = file($archivo->getRealPath());
+
+        // Inicializar el progreso en la tabla `import_progress`
+        DB::table('import_progress')->updateOrInsert(
+            ['id' => 1],
+            ['status' => 'in_progress', 'total_records' => count($data), 'processed_records' => 0]
+        );
+
+        // Limpiar la tabla antes de insertar los nuevos datos
+        Invantario::truncate();
+
+        // Insertar los datos y actualizar el progreso
         foreach ($data as $key => $linea) {
-            $arregloFilas=explode("\t",trim($linea));
-            if($key==0){
-                print_r($key);
-            }else{
-                $inventario=Invantario::Create([
-                    'numero_de_activo'=>isset($arregloFilas[2]) ? $arregloFilas[2] : null,
-                    'descripcion'=>isset($arregloFilas[5]) ? $arregloFilas[5] : null,
-                    'numero_de_serie'=>isset($arregloFilas[12]) ? $arregloFilas[12] : null,
-                    'modelo'=>isset($arregloFilas[13]) ? $arregloFilas[13] : null,
-                    'marca'=>isset($arregloFilas[14]) ? $arregloFilas[14] : null,
-                    'costo_actual'=>isset($arregloFilas[17]) ? $arregloFilas[17] : null,
-                    'inventario_nacional'=>isset($arregloFilas[37]) ? $arregloFilas[37] : null,
-                    'clave_ur'=>isset($arregloFilas[44]) ? $arregloFilas[44] : null,
-                    'resguardante_actual'=>isset($arregloFilas[45]) ? $arregloFilas[45] : null,
-                    'rfc_resguardante'=>isset($arregloFilas[46]) ? $arregloFilas[46] : null,
-                    'empleado'=>isset($arregloFilas[50]) ? $arregloFilas[50] : null
+            $arregloFilas = explode("\t", trim($linea));
+
+            if ($key > 0) {
+                Invantario::create([
+                    'numero_de_activo' => isset($arregloFilas[2]) ? $arregloFilas[2] : null,
+                    'descripcion' => isset($arregloFilas[5]) ? $arregloFilas[5] : null,
+                    'numero_de_serie' => isset($arregloFilas[12]) ? $arregloFilas[12] : null,
+                    'modelo' => isset($arregloFilas[13]) ? $arregloFilas[13] : null,
+                    'marca' => isset($arregloFilas[14]) ? $arregloFilas[14] : null,
+                    'costo_actual' => isset($arregloFilas[17]) ? $arregloFilas[17] : null,
+                    'inventario_nacional' => isset($arregloFilas[37]) ? $arregloFilas[37] : null,
+                    'clave_ur' => isset($arregloFilas[44]) ? $arregloFilas[44] : null,
+                    'resguardante_actual' => isset($arregloFilas[45]) ? $arregloFilas[45] : null,
+                    'rfc_resguardante' => isset($arregloFilas[46]) ? $arregloFilas[46] : null,
+                    'empleado' => isset($arregloFilas[50]) ? $arregloFilas[50] : null
+                ]);
+
+                // Actualizar el progreso inmediatamente
+                DB::table('import_progress')->where('id', 1)->update([
+                    'processed_records' => $key + 1 // +1 para reflejar el número total procesado
                 ]);
             }
-            $linea++;
         }
+
+        // Actualizar el progreso final
+        DB::table('import_progress')->where('id', 1)->update([
+            'status' => 'completed',
+            'processed_records' => count($data)
+        ]);
+
+        return response()->json(['message' => 'La carga de la base de datos se ha completado con éxito.']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Método para obtener el progreso actual
+    public function getProgress()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $progress = DB::table('import_progress')->find(1);
+        return response()->json($progress);
     }
 }
