@@ -64,10 +64,8 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="{{url('database')}}" class="nav-link active">
+              <a href="{{url('database')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
                   <i class="bi bi-database-add"></i>
                 </i>
@@ -77,7 +75,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('inventario')}}" class="nav-link active">
+              <a href="{{url('inventario')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
                   <i class="bi bi-clipboard-data"></i>
                 </i>
@@ -87,7 +85,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('logout') }}"
+              <a class="nav-link active" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" style="background-color: red">
                 <i class="nav-icon">

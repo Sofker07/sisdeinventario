@@ -7,7 +7,7 @@
 
     <div class="row">
       <div class="col-md-11">
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-pink">
           <div class="card-header">
             <h3 class="card-title"><b>Suba el archivo txt con la base de datos</b></h3>
           </div>
@@ -31,25 +31,21 @@
                   </div>
                 </div>
               </div>
-              
               <br>
-
               <!-- Barra de progreso -->
               <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" id="progressBar"></div>
               </div>
               <br>
-
               <hr>
               <div class="row">
                 <div class="col-md-3 ms-auto">
-                  <button type="submit" class="btn btn-primary btn-block">
+                  <button type="submit" class="btn btn-block" style="background-color: #DB0F7B; color: white;">
                     <i class="bi bi-upload"></i> Importar
                   </button>
                 </div>
               </div>
             </form>
-
             <!-- Mensaje de éxito o error -->
             <div id="message"></div>
           </div>
@@ -63,18 +59,18 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(document).ready(function () {
-      bsCustomFileInput.init(); // Inicializa el componente de selección de archivo
+      bsCustomFileInput.init();
 
       // Gestión del formulario con AJAX
       $('#uploadForm').on('submit', function (e) {
-        e.preventDefault();  // Evita el envío estándar del formulario
+        e.preventDefault();  // Evitar el envío estándar del formulario
 
         // Crear el objeto FormData para manejar el archivo
         var formData = new FormData(this);
 
         $.ajax({
           type: 'POST',
-          url: '{{ route("database.importador") }}',  // Ruta de tu backend para procesar el archivo
+          url: '{{ route("database.importador") }}',
           data: formData,
           contentType: false,
           processData: false,

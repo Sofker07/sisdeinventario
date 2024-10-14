@@ -17,9 +17,9 @@
     
     <div class="row">
       <div class="col-md-11">
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-pink">
           <div class="card-header">
-            <h3 class="card-title"><b>Escanea el codigo de barras del artículo</b></h3>
+            <h3 class="card-title"><b>Escanea el código de barras del artículo</b></h3>
           </div>
           <div class="card-body" style="display: block;">
             <form action="{{route('inventario.save')}}" method="post" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-grup">
-                    <label>Numero de Activo</label>
+                    <label>Número de Activo</label>
                     <input type="text" id="numero_activo" name="numero_activo" class="form-control" autofocus>
                   </div>
                 </div>

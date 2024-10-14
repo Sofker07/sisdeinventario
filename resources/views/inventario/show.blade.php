@@ -6,7 +6,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-pink">
           <div class="card-header">
             <h3 class="card-title"><b>Historial del artículo</b></h3>
           </div>
@@ -95,7 +95,7 @@
             </script>
             <hr>
             <div class="col-md-6">            
-              <a href="{{route('inventario.index')}}" id="regresar" class="btn btn-primary">
+              <a href="{{route('inventario.index')}}" id="regresar" class="btn" style="background-color: #d63384; color: white;">
                 <i class="bi bi-arrow-return-left"></i>
                 Regresar
               </a>          
