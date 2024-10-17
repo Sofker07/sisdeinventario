@@ -102,7 +102,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <label>Observaciones</label>
-                  <textarea class="form-control" id="observaciones" name="observaciones" placeholder="Escriba sus observaciones" spellcheck="false" data-ms-editor="true" style="height: 86px;"></textarea>
+                  <textarea class="form-control" id="observaciones" name="observaciones" placeholder="Escriba sus observaciones" spellcheck="false" data-ms-editor="true" style="height: 86px;" required></textarea>
                 </div>
               </div>
               <hr>
@@ -111,7 +111,7 @@
                   <label for="">¿El artículo es baja?</label>
                   <div class="form-group">
                     <label class="mr-3">
-                        <input type="radio" name="baja" value="true" class="mr-1">
+                        <input type="radio" name="baja" value="true" class="mr-1" required>
                         Sí
                     </label>
                     <label>
@@ -124,7 +124,7 @@
                   <label for="">¿El resguardante es el correcto?</label>
                   <div class="form-group">
                     <label class="mr-3">
-                        <input type="radio" name="resguardante" value="true" class="mr-1">
+                        <input type="radio" name="resguardante" value="true" class="mr-1" required>
                         Sí
                     </label>
                     <label>
