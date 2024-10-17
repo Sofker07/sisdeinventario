@@ -159,7 +159,12 @@
   <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-
+  <!-- Charts -->
+  <script src="{{('plugins/jquery/jquery.min.js')}}"></script>
+  <script src="{{('plugins/chart.js/Chart.min.js')}}"></script>
+  
+  <!-- Código JS de cada blade -->
   @stack('códigoJS')
+  
 </body>
 </html>

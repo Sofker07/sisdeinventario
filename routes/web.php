@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('index');})->middleware('auth')->name('index');
+// Route::get('/', function () {return view('index');})->middleware('auth')->name('index');
+
+Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('index')->middleware('auth');
 
 Auth::routes(['register'=>true]);
 
