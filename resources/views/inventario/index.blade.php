@@ -107,7 +107,33 @@
               </div>
               <hr>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
+                  <label for="">¿El artículo fue localizado?</label>
+                  <div class="form-group">
+                    <label class="mr-3">
+                        <input type="radio" name="localizado" value="true" class="mr-1" required>
+                        Sí
+                    </label>
+                    <label>
+                        <input type="radio" name="localizado" value="false" class="mr-1">
+                        No
+                    </label>
+                  </div>                
+                </div>
+                <div class="col-md-3">
+                  <label for="">¿Cuenta con etiqueta?</label>
+                  <div class="form-group">
+                    <label class="mr-3">
+                        <input type="radio" name="etiqueta" value="true" class="mr-1" required>
+                        Sí
+                    </label>
+                    <label>
+                        <input type="radio" name="etiqueta" value="false" class="mr-1">
+                        No
+                    </label>
+                  </div>                
+                </div>
+                <div class="col-md-3">
                   <label for="">¿El artículo es baja?</label>
                   <div class="form-group">
                     <label class="mr-3">
@@ -120,7 +146,7 @@
                     </label>
                   </div>                
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label for="">¿El resguardante es el correcto?</label>
                   <div class="form-group">
                     <label class="mr-3">
@@ -160,8 +186,10 @@
               <hr>
               <div class="row">
                 <div class="col-md-6">
-                  <button type="submit" class="btn btn-success">Confirmar</button>             
-                  <a href="#" id="historial-btn" class="btn btn-info">
+                  <button type="submit" class="btn" style="background-color:#E83E8C; color:white">
+                    Confirmar
+                  </button>             
+                  <a href="#" id="historial-btn" class="btn" style="background-color:#863780; color:white">
                     <i class="bi bi-eye"></i>
                     Ver historial
                   </a>          

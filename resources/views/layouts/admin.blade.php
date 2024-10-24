@@ -22,6 +22,11 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css?v=3.2.0')}}">
+
+  <!-- estilos propios -->
+  @yield('estilos')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -65,6 +70,31 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
+              <a href="#" class="nav-link active" style="background-color: #DB0F7B; color: white;">
+                <i class="nav-icon">
+                  <i class="bi bi-person-check"></i>
+                </i>
+                <p>
+                  Usuarios
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('usuarios/create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Nuevo Usuario</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('usuarios')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Listado de Usuarios</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
               <a href="{{url('database')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
                   <i class="bi bi-database-add"></i>
@@ -87,9 +117,9 @@
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" style="background-color: red">
+                document.getElementById('logout-form').submit();" style="background-color: #3C3C3C">
                 <i class="nav-icon">
-                  <i class="bi bi-door-closed"></i>
+                  <i class="bi bi-door-closed" style="color: red"></i>
                 </i>
                 <p>Cerrar Sesión</p>
               </a>
@@ -159,10 +189,10 @@
   <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+  <script src="{{asset('dist/js/adminlte.min.js?v=3.2.0')}}"></script>
   <!-- Charts -->
   <script src="{{('plugins/jquery/jquery.min.js')}}"></script>
   <script src="{{('plugins/chart.js/Chart.min.js')}}"></script>
-  
   <!-- Código JS de cada blade -->
   @stack('códigoJS')
   

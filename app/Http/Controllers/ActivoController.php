@@ -50,7 +50,7 @@ class ActivoController extends Controller
         //Validación de los campos del formulario
         $request->validate([
             'numero_activo'=>'required',
-            'observaciones'=>'required',
+            'observaciones'=>'required', //modificar a opcional
             'baja'=>'required',
             'resguardante'=>'required',
             'nuevo_resguardante'=>'required_if:resguardante,false',

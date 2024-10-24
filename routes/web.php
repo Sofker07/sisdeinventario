@@ -36,3 +36,5 @@ Route::get('/inventario/{numero}', [App\Http\Controllers\ActivoController::class
 Route::put('/inventario/guardar', [App\Http\Controllers\ActivoController::class, 'update'])->name('inventario.save');
 
 Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoController::class, 'show']);
+
+Route::resource('/usuarios',\App\Http\Controllers\UserController::class)->middleware('auth');

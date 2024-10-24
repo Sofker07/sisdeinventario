@@ -1,5 +1,15 @@
 @extends('layouts.admin')
 
+@section('estilos')
+  <style>
+    .pagination .page-item.active .page-link {
+        background-color: #E83E8C !important;
+        border-color: #E83E8C !important;
+        color: white !important;
+    }
+  </style>    
+@endsection
+
 @section('content')
   <div class="content" style="margin-left: 20px">
     <h1>Historial</h1>
@@ -95,7 +105,7 @@
             </script>
             <hr>
             <div class="col-md-6">            
-              <a href="{{route('inventario.index')}}" id="regresar" class="btn" style="background-color: #d63384; color: white;">
+              <a href="{{route('inventario.index')}}" id="regresar" class="btn" style="background-color: #E94892; color: white;">
                 <i class="bi bi-arrow-return-left"></i>
                 Regresar
               </a>          

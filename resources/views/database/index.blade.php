@@ -40,7 +40,7 @@
               <hr>
               <div class="row">
                 <div class="col-md-3 ms-auto">
-                  <button type="submit" class="btn btn-block" style="background-color: #DB0F7B; color: white;">
+                  <button type="submit" class="btn btn-block" style="background-color:#E83E8C; color:white">
                     <i class="bi bi-upload"></i> Importar
                   </button>
                 </div>
