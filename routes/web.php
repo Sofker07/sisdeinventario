@@ -38,3 +38,5 @@ Route::put('/inventario/guardar', [App\Http\Controllers\ActivoController::class,
 Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoController::class, 'show']);
 
 Route::resource('/usuarios',\App\Http\Controllers\UserController::class)->middleware('auth');
+
+Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes')->middleware('auth');

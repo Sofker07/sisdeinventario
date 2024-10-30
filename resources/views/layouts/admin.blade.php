@@ -115,6 +115,16 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{url('reportes')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
+                <i class="nav-icon">
+                  <i class="bi bi-file-earmark-text"></i>
+                </i>
+                <p>
+                  Generar reportes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link active" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" style="background-color: #3C3C3C">
@@ -189,9 +199,7 @@
   <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-  <script src="{{asset('dist/js/adminlte.min.js?v=3.2.0')}}"></script>
   <!-- Charts -->
-  <script src="{{('plugins/jquery/jquery.min.js')}}"></script>
   <script src="{{('plugins/chart.js/Chart.min.js')}}"></script>
   <!-- Código JS de cada blade -->
   @stack('códigoJS')

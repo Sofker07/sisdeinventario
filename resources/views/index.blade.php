@@ -39,7 +39,7 @@
             </div>
          </div>
          <div class="col-12 col-sm-6 col-md-3">
-            <a href="#">
+            <a href="{{url('reportes')}}">
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-file-earmark-text"></i></span>
                   <div class="info-box-content">

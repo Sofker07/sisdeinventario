@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('resguardante_actual')->nullable();
             $table->string('rfc_resguardante')->nullable();
             $table->string('empleado')->nullable();
+            $table->boolean('localizado')->default(false);
+            $table->boolean('baja')->default(false);
+            $table->string('observaciones')->nullable();
             $table->timestamps();
         });
     }
