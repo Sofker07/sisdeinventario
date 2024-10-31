@@ -102,38 +102,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <label>Observaciones</label>
-                  <textarea class="form-control" id="observaciones" name="observaciones" placeholder="Escriba sus observaciones" spellcheck="false" data-ms-editor="true" style="height: 86px;" required></textarea>
+                  <textarea class="form-control" id="observaciones" name="observaciones" placeholder="Escriba sus observaciones" spellcheck="false" data-ms-editor="true" style="height: 86px;"></textarea>
                 </div>
               </div>
               <hr>
               <div class="row">
-                <div class="col-md-3">
-                  <label for="">¿El artículo fue localizado?</label>
-                  <div class="form-group">
-                    <label class="mr-3">
-                        <input type="radio" name="localizado" value="true" class="mr-1" required>
-                        Sí
-                    </label>
-                    <label>
-                        <input type="radio" name="localizado" value="false" class="mr-1">
-                        No
-                    </label>
-                  </div>                
-                </div>
-                <div class="col-md-3">
-                  <label for="">¿Cuenta con etiqueta?</label>
-                  <div class="form-group">
-                    <label class="mr-3">
-                        <input type="radio" name="etiqueta" value="true" class="mr-1" required>
-                        Sí
-                    </label>
-                    <label>
-                        <input type="radio" name="etiqueta" value="false" class="mr-1">
-                        No
-                    </label>
-                  </div>                
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-6" style="margin: auto; text-align:center;">
                   <label for="">¿El artículo es baja?</label>
                   <div class="form-group">
                     <label class="mr-3">
@@ -146,7 +120,7 @@
                     </label>
                   </div>                
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6" style="margin: auto; text-align:center;">
                   <label for="">¿El resguardante es el correcto?</label>
                   <div class="form-group">
                     <label class="mr-3">
