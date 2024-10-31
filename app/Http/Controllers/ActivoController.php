@@ -19,6 +19,10 @@ class ActivoController extends Controller
 
     public function infoActivo($numero)
     {
+        // // Quitar los primeros dos dígitos
+        // $numeroComoCadena = (string)$numero;
+        // $resultado = substr($numeroComoCadena, 2);
+        
         // Busca el activo por su número
         $activo = Invantario::where('numero_de_activo', $numero)->first();
 
@@ -57,30 +61,41 @@ class ActivoController extends Controller
             'rfc_nuevo'=>'required_if:resguardante,false',
             'no_empleado'=>'required_if:resguardante,false'
         ]);
-
-        //Buscar el activo por su numero
-        $activo= new Historial();
-
-        //Actualizar la información del activo con los datos del formulario
-        $activo->numero_de_activo=$request->numero_activo;
-        $activo->observaciones = $request->observaciones;
-        $activo->baja = $request->baja === 'true';
-        $activo->resguardante_correcto = $request->resguardante === 'true';
-        
+        /* Guardar los datos en el Histórico*/
+        //Crear un nuevo registro en la tabla historial
+        $activo_historial= new Historial();
+        //Guardar la información del activo con los datos del formulario en el histórico
+        $activo_historial->numero_de_activo=$request->numero_activo;
+        $activo_historial->observaciones = $request->observaciones;
+        $activo_historial->baja = $request->baja === 'true';
+        $activo_historial->resguardante_correcto = $request->resguardante === 'true';
         //Añadir nuevo resguardante si el actual no es correcto
         if($request->resguardante=='false'){
-            $activo->resguardante_nuevo=$request->nuevo_resguardante;
-            $activo->rfc_resguardante_nuevo=$request->rfc_nuevo;
-            $activo->empleado_nuevo=$request->no_empleado;
+            $activo_historial->resguardante_nuevo=$request->nuevo_resguardante;
+            $activo_historial->rfc_resguardante_nuevo=$request->rfc_nuevo;
+            $activo_historial->empleado_nuevo=$request->no_empleado;
         }
-        
-        //Guardar los cambios en la Base de Datos
-        $activo->save();
-        
+        //Guardar los datos en la tabla historial
+        $activo_historial->save();
+
+        /*Actualizar los datos en la tabla de inventario*/
+        //Buscar el activo por su numero en la tabla de inventario
+        $activo_inventario= Invantario::find($request->numero_activo);
+        //
+        $activo_inventario->observaciones = $request->observaciones;
+        $activo_inventario->baja = $request->baja === 'true';
+        $activo_inventario->localizado = 'true';
+        //Actualizar el reguardante si el actual no es correcto en la tabla de inventario
+        if($request->resguardante=='false'){
+            $activo_inventario->resguardante_nuevo=$request->nuevo_resguardante;
+            $activo_inventario->rfc_resguardante_nuevo=$request->rfc_nuevo;
+            $activo_inventario->empleado_nuevo=$request->no_empleado;
+        }
+        //Guardar los datos en la tabla historial
+        $activo_inventario->save();
+
         //redireccionar a la vista de inventario
         return redirect()->route('inventario.index')->with('mensaje','Se actualizó correctamente el artículo');
-
-
     }
     
     /**
@@ -88,6 +103,9 @@ class ActivoController extends Controller
      */
     public function show($numero_de_activo)
     {
+        // // Quitar los primeros dos dígitos
+        // $numeroComoCadena = (string)$numero_de_activo;
+        // $resultado = substr($numeroComoCadena, 2);
         $activos = Historial::where('numero_de_activo', $numero_de_activo)->get();
         return view('inventario.show', compact('activos'));
     }

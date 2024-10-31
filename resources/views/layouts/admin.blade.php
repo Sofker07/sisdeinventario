@@ -171,7 +171,7 @@
         De parte de su amigo Néstor
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2024 <a href="https://www.oplever.org.mx/">OPLEVER</a>.</strong> Todos los derechos reservados.
+      <strong>Copyright &copy; 2024 <a href="https://www.oplever.org.mx/">Organismo Público Local Electoral de Veracruz</a>.</strong> Todos los derechos reservados.
     </footer>
   </div>
   <!-- ./wrapper -->
