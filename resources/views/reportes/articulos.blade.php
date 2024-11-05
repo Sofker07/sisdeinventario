@@ -37,6 +37,9 @@
         <!-- Report Info -->
         <div class="report-info">
             <p><strong>Fecha:</strong> 11/01/2024 &nbsp; | &nbsp; <strong>Hora:</strong> 18:19:23</p>
+            <p><strong>Fecha:</strong>{{$fecha}}</p>
+            <h3 style="text-align: center">RESGUARDO DE BIENE MUEBLES</h3>
+            <p><strong>Hora:</strong>{{$hora}}</p>
             <p><strong>UNIDAD RESPONSABLE:</strong> VZ00 VOCALIA EJECUTIVA DE JUNTA LOCAL</p>
             <p><strong>ADSCRIPCIÓN:</strong> VZ00 COORDINACIÓN ADMINISTRATIVA DE JUNTA LOCAL</p>
             <p><strong>SUBDIRECCIÓN / VOCALÍA:</strong> VZ00 COORDINACIÓN ADMINISTRATIVA DE JUNTA LOCAL</p>
@@ -57,21 +60,23 @@
             </thead>
             <tbody>
                 <?php $contador=0;?>
+                <?php $costo_total=0;?>
                 @foreach ($activos as $activo)
                 <tr>
                     <?php $contador=$contador+1;?>
-                    <td>{{ $activo->numero_activo }}</td>
+                    <td>{{ $activo->numero_de_activo }}</td>
                     <td>{{ $activo->descripcion }}</td>
                     <td>{{ $activo->marca }}</td>
-                    <td>{{ $activo->no_serie }}</td>
+                    <td>{{ $activo->no_de_serie }}</td>
                     <td>{{ $activo->costo_actual }}</td>
+                    <?php $costo_total = $contador + $activo->costo_actual;?>
                 </tr>    
                 @endforeach
             </tbody>
         </table>
         
         <!-- Total -->
-        <p><strong>Total de bienes:</strong> <?php echo $contador;?> &nbsp; | &nbsp; <strong>Valor total:</strong> 9,797.39</p>
+        <p><strong>Total de bienes:</strong> <?php echo $contador;?> &nbsp; | &nbsp; <strong>Valor total:</strong> <?php echo $costo_total;?></p>
 
         <!-- Commitment Section -->
         <div class="commitment">
