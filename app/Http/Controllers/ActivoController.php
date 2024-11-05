@@ -54,45 +54,48 @@ class ActivoController extends Controller
         //Validación de los campos del formulario
         $request->validate([
             'numero_activo'=>'required',
-            'observaciones'=>'required', //modificar a opcional
             'baja'=>'required',
             'resguardante'=>'required',
             'nuevo_resguardante'=>'required_if:resguardante,false',
             'rfc_nuevo'=>'required_if:resguardante,false',
             'no_empleado'=>'required_if:resguardante,false'
         ]);
-        /* Guardar los datos en el Histórico*/
-        //Crear un nuevo registro en la tabla historial
-        $activo_historial= new Historial();
-        //Guardar la información del activo con los datos del formulario en el histórico
-        $activo_historial->numero_de_activo=$request->numero_activo;
-        $activo_historial->observaciones = $request->observaciones;
-        $activo_historial->baja = $request->baja === 'true';
-        $activo_historial->resguardante_correcto = $request->resguardante === 'true';
-        //Añadir nuevo resguardante si el actual no es correcto
-        if($request->resguardante=='false'){
-            $activo_historial->resguardante_nuevo=$request->nuevo_resguardante;
-            $activo_historial->rfc_resguardante_nuevo=$request->rfc_nuevo;
-            $activo_historial->empleado_nuevo=$request->no_empleado;
-        }
-        //Guardar los datos en la tabla historial
-        $activo_historial->save();
 
-        /*Actualizar los datos en la tabla de inventario*/
-        //Buscar el activo por su numero en la tabla de inventario
-        $activo_inventario= Invantario::find($request->numero_activo);
-        //
-        $activo_inventario->observaciones = $request->observaciones;
-        $activo_inventario->baja = $request->baja === 'true';
-        $activo_inventario->localizado = 'true';
-        //Actualizar el reguardante si el actual no es correcto en la tabla de inventario
-        if($request->resguardante=='false'){
-            $activo_inventario->resguardante_nuevo=$request->nuevo_resguardante;
-            $activo_inventario->rfc_resguardante_nuevo=$request->rfc_nuevo;
-            $activo_inventario->empleado_nuevo=$request->no_empleado;
+        if($request->resguardante=='false'){//cuando el reguadante no es el correcto
+            //Actualizar los valores en la tabla de inventario junto con los del nuevo resguardante
+            Invantario::where('numero_de_activo',$request->numero_activo)->update([
+                'observaciones' => $request->observaciones,
+                'baja' => $request->baja === 'true',
+                'localizado' => 'true',
+                'resguardante_nuevo'=>$request->nuevo_resguardante,
+                'rfc_resguardante_nuevo'=>$request->rfc_nuevo,
+                'empleado_nuevo'=>$request->no_empleado,
+            ]);
+            //Insertar los valores en la tabla de historial junto con los del nuevo resguardante
+            Historial::create([
+                'numero_de_activo'=>$request->numero_activo,
+                'observaciones' => $request->observaciones,
+                'baja' => $request->baja === 'true',
+                'resguardante_correcto' => $request->resguardante === 'true',
+                'resguardante_nuevo'=>$request->nuevo_resguardante,
+                'rfc_resguardante_nuevo'=>$request->rfc_nuevo,
+                'empleado_nuevo'=>$request->no_empleado,
+            ]);
+        }else{//Cuando el resguardante si es el correcto
+            //Actualizar los valores en la tabla de inventario sin afectar al resguardante actual
+            Invantario::where('numero_de_activo',$request->numero_activo)->update([
+                'observaciones' => $request->observaciones,
+                'baja' => $request->baja === 'true',
+                'localizado' => 'true',
+            ]);
+            //Insertar los valores en la tabla de historial sin un nuevo resguardante
+            Historial::create([
+                'numero_de_activo'=>$request->numero_activo,
+                'observaciones' => $request->observaciones,
+                'baja' => $request->baja === 'true',
+                'resguardante_correcto' => $request->resguardante === 'true',
+            ]);
         }
-        //Guardar los datos en la tabla historial
-        $activo_inventario->save();
 
         //redireccionar a la vista de inventario
         return redirect()->route('inventario.index')->with('mensaje','Se actualizó correctamente el artículo');
