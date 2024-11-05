@@ -15,6 +15,12 @@
       </script>
     @endif
     
+    @foreach ($errors->all() as $error)
+      <div class="alert alert-danger">
+        <li>{{$error}}</li>
+      </div>
+    @endforeach
+    
     <div class="row">
       <div class="col-md-11">
         <div class="card card-outline card-pink">
