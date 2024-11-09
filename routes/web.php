@@ -40,3 +40,5 @@ Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoControll
 Route::resource('/usuarios',\App\Http\Controllers\UserController::class)->middleware('auth');
 
 Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes')->middleware('auth');
+
+Route::get('/reportes/prueba', [App\Http\Controllers\ReportesController::class, 'reportes'])->name('reportes.pdf')->middleware('auth');

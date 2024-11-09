@@ -12,7 +12,7 @@
             <h3 class="card-title"><b>RFC del resguardante</b></h3>
           </div>
           <div class="card-body" style="display: block;">
-            <form action="{{route('inventario.save')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('reportes.pdf')}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="row">
                 <div class="col-md-9">
@@ -28,6 +28,9 @@
                   <button type="submit" class="btn btn-block" style="background-color:#E83E8C; color:white">
                     <i class="bi bi-file-earmark-text"></i> Generar reportes
                   </button>
+                </div>
+                <div class="col-md-3 ms-auto">
+                  <a href="{{route('reportes.pdf')}}">Preuba</a>
                 </div>
               </div>
             </form>

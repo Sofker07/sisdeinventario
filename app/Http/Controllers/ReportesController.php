@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invantario;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ReportesController extends Controller
 {
@@ -16,7 +19,9 @@ class ReportesController extends Controller
 
     public function reportes(Request $request)
     {
-        
+        $activos=Invantario::where('rfc_resguardante',$request->rfc_resguardante)->get();
+        $pdf = Pdf::loadView('pdf.invoice', ['activos'=>$activos]);
+        return $pdf->stream();
     }
 
     /**
