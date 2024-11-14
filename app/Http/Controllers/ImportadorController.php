@@ -26,6 +26,7 @@ class ImportadorController extends Controller
         // Obtener el archivo
         $archivo = $request->file('archivo_txt');
         $data = file($archivo->getRealPath());
+        $data = mb_convert_encoding($data,'UTF-8', 'UTF-8');
 
         // Inicializar el progreso en la tabla `import_progress`
         DB::table('import_progress')->updateOrInsert(
