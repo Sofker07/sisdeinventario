@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -47,6 +48,8 @@ class UserController extends Controller
         $usuario->password=Hash::make($request['password']);
 
         $usuario->save();
+        $usuario->assignRole(Role::find(2));
+
         return redirect()->route('usuarios.index')->with('mensaje','Se registró al usuario de la manera correcta');
     }
 

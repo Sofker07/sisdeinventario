@@ -69,31 +69,33 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="#" class="nav-link active" style="background-color: #DB0F7B; color: white;">
-                <i class="nav-icon">
-                  <i class="bi bi-person-check"></i>
-                </i>
-                <p>
-                  Usuarios
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{url('usuarios/create')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Nuevo Usuario</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{url('usuarios')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Listado de Usuarios</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            @can('usuarios')
+              <li class="nav-item">
+                <a href="#" class="nav-link active" style="background-color: #DB0F7B; color: white;">
+                  <i class="nav-icon">
+                    <i class="bi bi-person-check"></i>
+                  </i>
+                  <p>
+                    Usuarios
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{url('usuarios/create')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Nuevo Usuario</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{url('usuarios')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Listado de Usuarios</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            @endcan
             <li class="nav-item">
               <a href="{{url('database')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
@@ -115,14 +117,29 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('reportes')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
+              <a href="#" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
                   <i class="bi bi-file-earmark-text"></i>
                 </i>
                 <p>
                   Generar reportes
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('reportes')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Resguardante</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('reportes/general')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('logout') }}"
@@ -171,7 +188,7 @@
         De parte de su amigo Néstor
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2024 <a href="https://www.oplever.org.mx/">Organismo Público Local Electoral de Veracruz</a>.</strong> Todos los derechos reservados.
+      <strong>Copyright &copy; 2024 <a href="https://www.oplever.org.mx/" target="_blank">Organismo Público Local Electoral de Veracruz</a>.</strong> Todos los derechos reservados.
     </footer>
   </div>
   <!-- ./wrapper -->

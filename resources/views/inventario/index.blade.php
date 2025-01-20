@@ -1,5 +1,32 @@
 @extends('layouts.admin')
 
+@section('estilos')
+  <style>
+    input:focus {
+      border-color: #ff69b4 !important; /* Cambia al color rosado */
+      box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25); /* Añade un efecto de sombra suave */
+      outline: none; /* Opcional: remueve el borde interno */
+    }
+    textarea:focus {
+      border-color: #ff69b4 !important; /* Cambia al color rosado */
+      box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25); /* Añade un efecto de sombra suave */
+      outline: none; /* Opcional: remueve el borde interno */
+    }
+    input[type="radio"] {
+      accent-color: #ff69b4; /* Cambia el color rosado */
+    }
+
+    /* Opcional: Cambia el hover o el estado checked (marcado) */
+    input[type="radio"]:checked {
+      accent-color: #ff69b4; /* Mismo color rosado para checked */
+    }
+    input[type="radio"]:focus {
+      outline: none; /* Un contorno rosado más estilizado */
+      box-shadow: none;
+    }
+  </style>    
+@endsection
+
 @section('content')
   <div class="content" style="margin-left: 20px">
     

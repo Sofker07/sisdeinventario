@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="content" style="margin-left: 20px">
-    <h1>Creacion de un nuevo usuario</h1>
+    <h1>Información del usuario</h1>
 
     @if ($message = Session::get('mensaje'))
       <script>

@@ -66,7 +66,7 @@ class ActivoController extends Controller
             Invantario::where('numero_de_activo',$request->numero_activo)->update([
                 'observaciones' => $request->observaciones,
                 'baja' => $request->baja === 'true',
-                'localizado' => 'true',
+                'localizado' => true,
                 'resguardante_nuevo'=>$request->nuevo_resguardante,
                 'rfc_resguardante_nuevo'=>$request->rfc_nuevo,
                 'empleado_nuevo'=>$request->no_empleado,
@@ -86,7 +86,7 @@ class ActivoController extends Controller
             Invantario::where('numero_de_activo',$request->numero_activo)->update([
                 'observaciones' => $request->observaciones,
                 'baja' => $request->baja === 'true',
-                'localizado' => 'true',
+                'localizado' => true,
             ]);
             //Insertar los valores en la tabla de historial sin un nuevo resguardante
             Historial::create([
@@ -94,6 +94,9 @@ class ActivoController extends Controller
                 'observaciones' => $request->observaciones,
                 'baja' => $request->baja === 'true',
                 'resguardante_correcto' => $request->resguardante === 'true',
+                'resguardante_nuevo'=>$request->resguardante_actual,
+                'rfc_resguardante_nuevo'=>$request->rfc_resguardante,
+                'empleado_nuevo'=>$request->empleado,
             ]);
         }
 

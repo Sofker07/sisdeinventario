@@ -29,16 +29,20 @@ Route::get('/inventario', [App\Http\Controllers\ActivoController::class, 'index'
 
 Route::post('/database/importador', [App\Http\Controllers\ImportadorController::class, 'importar'])->name('database.importador')->middleware('auth');
 
-Route::get('/progreso', [App\Http\Controllers\ImportadorController::class, 'getProgress'])->name('database.getProgress');
+Route::get('/database/progreso', [App\Http\Controllers\ImportadorController::class, 'obtenerProgreso'])->name('database.progreso');
 
 Route::get('/inventario/{numero}', [App\Http\Controllers\ActivoController::class, 'infoActivo'])->name('inventario')->middleware('auth');
 
 Route::put('/inventario/guardar', [App\Http\Controllers\ActivoController::class, 'update'])->name('inventario.save');
 
-Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoController::class, 'show']);
+Route::get('/historial/{numero_de_activo}', [App\Http\Controllers\ActivoController::class, 'show'])->name('historial')->middleware('auth');
 
-Route::resource('/usuarios',\App\Http\Controllers\UserController::class)->middleware('auth');
+Route::resource('/usuarios',\App\Http\Controllers\UserController::class)->middleware(['auth', 'can:usuarios']);
 
 Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes')->middleware('auth');
 
-Route::get('/reportes/prueba', [App\Http\Controllers\ReportesController::class, 'reportes'])->name('reportes.pdf')->middleware('auth');
+Route::get('/reportes/descargapdf', [App\Http\Controllers\ReportesController::class, 'reportes'])->name('reportes.pdf')->middleware('auth');
+
+Route::get('/reportes/general', [App\Http\Controllers\ReportesController::class, 'base'])->name('reportes.base')->middleware('auth');
+
+Route::get('/reportes/descargaxlsx', [App\Http\Controllers\ReportesController::class, 'excel'])->name('reportes.excel')->middleware('auth');

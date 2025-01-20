@@ -29,7 +29,7 @@
                   <th>Observaciones</th>
                   <th>Baja</th>
                   <th>Resguardante Correcto</th>
-                  <th>Nuevo Resguardante</th>
+                  <th>Resguardante</th>
                   <th>RFC</th>
                   <th>No. de Empleado</th>
                   <th>Fecha</th>

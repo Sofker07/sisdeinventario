@@ -1,5 +1,15 @@
 @extends('layouts.admin')
 
+@section('estilos')
+   <style>
+      input:focus {
+         border-color: #ff69b4 !important; /* Cambia al color rosado */
+         box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25); /* Añade un efecto de sombra suave */
+         outline: none; /* Opcional: remueve el borde interno */
+      }
+   </style>
+@endsection
+
 @section('content')
    <div class="content" style="margin: 20px">
       <h1>Página Principal</h1>
@@ -20,7 +30,7 @@
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-clipboard-data"></i></span>
                   <div class="info-box-content">
-                     <span class="info-box-text" style="color: black">Comenzar Inveantario</span>
+                     <span class="info-box-text" style="color: black">Comenzar Inventario</span>
                   </div>
                </div>
             </a>
@@ -43,7 +53,7 @@
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-file-earmark-text"></i></span>
                   <div class="info-box-content">
-                     <span class="info-box-text" style="color: black">Generar reportes</span>
+                     <span class="info-box-text" style="color: black">Generar reporte individual</span>
                   </div>
                </div>
             </a>
@@ -93,15 +103,7 @@
             <div class="col-lg-12">
                <div class="card card-pink">
                   <div class="card-header">
-                     <h3 class="card-title">Donut Chart</h3>
-                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                           <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                           <i class="fas fa-times"></i>
-                        </button>
-                     </div>
+                     <h3 class="card-title">Gráfica de dona</h3>
                   </div>
                   <div class="card-body">
                      <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
