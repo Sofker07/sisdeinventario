@@ -12,7 +12,7 @@
 
 @section('content')
    <div class="content" style="margin: 20px">
-      <h1>Página Principal</h1>
+      <h1>Página principal</h1>
       <br>
       <div class="row">
          <div class="col-12 col-sm-6 col-md-3">
@@ -20,7 +20,7 @@
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-database-add"></i></span>
                   <div class="info-box-content">
-                     <span class="info-box-text" style="color: black">Importar Base de Datos</span>
+                     <span class="info-box-text" style="color: black">Importar base de datos</span>
                   </div>
                </div>
             </a>
@@ -30,7 +30,7 @@
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-clipboard-data"></i></span>
                   <div class="info-box-content">
-                     <span class="info-box-text" style="color: black">Comenzar Inventario</span>
+                     <span class="info-box-text" style="color: black">Comenzar inventario</span>
                   </div>
                </div>
             </a>
@@ -53,7 +53,7 @@
                <div class="info-box" style="height: 85px">
                   <span class="info-box-icon bg-pink elevation-1"><i class="bi bi-file-earmark-text"></i></span>
                   <div class="info-box-content">
-                     <span class="info-box-text" style="color: black">Generar reporte individual</span>
+                     <span class="info-box-text" style="color: black">Generar reporte</span>
                   </div>
                </div>
             </a>
@@ -66,7 +66,7 @@
                   <div class="small-box" style="height: 160px; background-color: #A1116E;">
                      <div class="inner">
                         <h3 style="color: white">{{$articulos}}</h3>
-                        <p style="color: white">Total de Artículos</p>
+                        <p style="color: white">Total de artículos</p>
                      </div>
                      <div class="icon">
                         <i class="bi bi-box-seam"></i>
@@ -77,7 +77,7 @@
                   <div class="small-box" style="height: 160px; background-color: #B83B87;">
                      <div class="inner">
                         <h3 style="color: white">{{$registros_actuales}}</h3>
-                        <p style="color: white">Artiuclos inventariados</p>
+                        <p style="color: white">Artículos inventariados</p>
                      </div>
                      <div class="icon">
                         <i class="bi bi-clipboard-check"></i>

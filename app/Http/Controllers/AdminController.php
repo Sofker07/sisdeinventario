@@ -21,7 +21,7 @@ class AdminController extends Controller
         ->count();
         $registros_faltantes = $articulos - $registros_actuales;
         $data=[$registros_actuales,$registros_faltantes];
-        $labels=['Artiuclos inventariados','Artículos faltantes'];
+        $labels=['Artículos inventariados','Artículos faltantes'];
         return view('index', compact(
             'articulos',
             'registros_actuales',
