@@ -43,6 +43,4 @@ Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'
 
 Route::get('/reportes/descargapdf', [App\Http\Controllers\ReportesController::class, 'reportes'])->name('reportes.pdf')->middleware('auth');
 
-Route::get('/reportes/general', [App\Http\Controllers\ReportesController::class, 'base'])->name('reportes.base')->middleware('auth');
-
 Route::get('/reportes/descargaxlsx', [App\Http\Controllers\ReportesController::class, 'excel'])->name('reportes.excel')->middleware('auth');

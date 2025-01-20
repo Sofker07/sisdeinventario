@@ -88,11 +88,6 @@
             return response()->download($zipPath)->deleteFileAfterSend(true);
         }
 
-        public function base()
-        {
-            return view('reportes.base');
-        }
-
         public function excel()
         {
             $activos = Invantario::all();
