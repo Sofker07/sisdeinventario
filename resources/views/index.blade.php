@@ -44,7 +44,7 @@
                </span>
                <div class="info-box-content">
                   <span class="info-box-text" style="color: black">Ver historial</span>
-                  <input type="text" class="form-control form-control-sm mt-2" id="input-value" placeholder="No. de artículo">
+                  <input type="text" class="form-control form-control-sm mt-2" id="input-value" placeholder="No. de artículo" required>
                </div>
             </div>
          </div>
@@ -140,11 +140,17 @@
    </script>
    <script>
       document.getElementById('dynamic-link').addEventListener('click', function(event) {
-      event.preventDefault();
-      var inputValue = document.getElementById('input-value').value;
-      var newUrl = "/sisdeinventario/public/historial/" + inputValue;
-      this.setAttribute('href', newUrl);
-      window.location.href = newUrl;
+         event.preventDefault();
+         var inputValue = document.getElementById('input-value').value.trim();
+         if (!inputValue) {
+            // Mostrar alerta si el input está vacío
+            alert('Por favor, ingresa un número de artículo para continuar.');
+            return;
+         }
+         // Construir la nueva URL y redirigir si hay un valor en el input
+         var newUrl = "/sisdeinventario/public/historial/" + inputValue;
+         this.setAttribute('href', newUrl);
+         window.location.href = newUrl;
       });
    </script>
 @endpush
