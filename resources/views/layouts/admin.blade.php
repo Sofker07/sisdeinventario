@@ -117,29 +117,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active" style="background-color: #DB0F7B; color: white;">
+              <a href="{{url('reportes')}}" class="nav-link active" style="background-color: #DB0F7B; color: white;">
                 <i class="nav-icon">
                   <i class="bi bi-file-earmark-text"></i>
                 </i>
                 <p>
                   Generar reportes
-                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{url('reportes')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Resguardante</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{url('reportes/general')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>General</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('logout') }}"
