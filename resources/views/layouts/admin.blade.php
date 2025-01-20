@@ -41,7 +41,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{route('index')}}" class="nav-link">Sistema de Inventario</a>
+          <a href="{{route('index')}}" class="nav-link">Sistema de inventario</a>
         </li>
       </ul>
     </nav>
@@ -52,7 +52,7 @@
       <!-- Brand Logo -->
       <a href="{{route('index')}}" class="brand-link">
         <img src="{{ url('/dist/img/IneLogo1.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Sistema de Inventario</span>
+        <span class="brand-text font-weight-light">Sistema de inventario</span>
       </a>
 
       <!-- Sidebar -->
@@ -85,13 +85,13 @@
                   <li class="nav-item">
                     <a href="{{url('usuarios/create')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Nuevo Usuario</p>
+                      <p>Nuevo usuario</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{url('usuarios')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Listado de Usuarios</p>
+                      <p>Listado de usuarios</p>
                     </a>
                   </li>
                 </ul>
@@ -134,7 +134,7 @@
                 <i class="nav-icon">
                   <i class="bi bi-door-closed" style="color: red"></i>
                 </i>
-                <p>Cerrar Sesión</p>
+                <p>Cerrar sesión</p>
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
