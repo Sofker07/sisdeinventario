@@ -28,10 +28,10 @@
                   <th>Nro.</th>
                   <th>Observaciones</th>
                   <th>Baja</th>
-                  <th>Resguardante Correcto</th>
+                  <th>Resguardante correcto</th>
                   <th>Resguardante</th>
                   <th>RFC</th>
-                  <th>No. de Empleado</th>
+                  <th>No. de empleado</th>
                   <th>Fecha</th>
                 </tr>
               </thead>

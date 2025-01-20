@@ -61,8 +61,8 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-grup">
-                    <label>Número de Activo</label>
-                    <input type="text" id="numero_activo" name="numero_activo" class="form-control" autofocus>
+                    <label>Número de activo</label>
+                    <input type="text" id="numero_activo" name="numero_activo" class="form-control" autofocus required>
                   </div>
                 </div>
               </div>
@@ -109,7 +109,7 @@
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-grup">
-                    <label>Clave Ur</label>
+                    <label>Clave UR</label>
                     <input type="text" id="clave_ur" name="clave_ur"  class="form-control" readonly>
                   </div>
                 </div>
